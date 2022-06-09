@@ -12,16 +12,19 @@ function addBookToLibrary(book, array) {
     array.push(book);
 };
 
-function printLibrary(array) {
-    for(let i = 0; i < array.length; i++) {
-        console.table(array[i]);
-    }
-};
 
 function makeBook(title, author, status) {
     const myBook = new Book(title, author, status);
     return myBook;
-}
+};
+
+function displayLibrary() {
+    const tdata = myLibrary[myLibrary.length - 1].title;
+    const adata = myLibrary[myLibrary.length - 1].author;
+    const sdata = myLibrary[myLibrary.length - 1].status;
+
+    
+};
 
 button.addEventListener('click', () => {
     const title = document.querySelector('#title');
