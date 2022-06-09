@@ -2,16 +2,22 @@ let myLibrary = [];
 const table = document.querySelector('table');
 const button = document.querySelector('button');
 
-function Book(title, author, pages, status) {
+function Book(title, author, pages, status, index) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.status = status;
+    this.index = index;
 };
 
 Book.prototype.addBookToLibrary = function(array) {
     array.push(this);
 };
+
+Book.prototype.removeBookFromLibrary = function(array) {
+    console.log(`The index is ${this.index}`)
+    array.splice(this.index, 1);
+}
 
 function clearInput(title, author, pages) {
     title.value = '';
@@ -39,7 +45,7 @@ Book.prototype.addBookToTable = function() {
     status.textContent = sdata;
     remove.textContent = 'Remove';
     remove.addEventListener('click', () => {
-        console.log(tdata);
+        this.removeBookFromLibrary(myLibrary);
     });
 
     newRow.appendChild(title);
@@ -56,7 +62,7 @@ button.addEventListener('click', () => {
     const pages = document.querySelector('#pages');
     const status = document.querySelector('#status');
 
-    const myBook = new Book(title.value, author.value, pages.value, status.value);
+    const myBook = new Book(title.value, author.value, pages.value, status.value, myLibrary.length);
     myBook.addBookToLibrary(myLibrary);
     myBook.addBookToTable();
 
