@@ -18,12 +18,31 @@ function makeBook(title, author, status) {
     return myBook;
 };
 
-function displayLibrary() {
+function addBookToTable() {
     const tdata = myLibrary[myLibrary.length - 1].title;
     const adata = myLibrary[myLibrary.length - 1].author;
     const sdata = myLibrary[myLibrary.length - 1].status;
 
-    
+    const newRow = document.createElement('tr');
+    const title = document.createElement('td');
+    const author = document.createElement('td');
+    const status = document.createElement('td');
+    const remove = document.createElement('button');
+    remove.classList.add('remove');
+
+    title.textContent = tdata;
+    author.textContent = adata;
+    status.textContent = sdata;
+    remove.textContent = 'Remove';
+    remove.addEventListener('click', () => {
+        console.log(tdata);
+    });
+
+    newRow.appendChild(title);
+    newRow.appendChild(author);
+    newRow.appendChild(status);
+    newRow.appendChild(remove);
+    table.appendChild(newRow);
 };
 
 button.addEventListener('click', () => {
@@ -33,4 +52,5 @@ button.addEventListener('click', () => {
 
     const myBook = makeBook(title.value, author.value, status.value);
     addBookToLibrary(myBook, myLibrary);
+    addBookToTable();
 });
