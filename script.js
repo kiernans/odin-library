@@ -41,6 +41,7 @@ Book.prototype.addBookToTable = function(index) {
     const author = document.createElement('td');
     const pages = document.createElement('td');
     const status = document.createElement('td');
+    const removeColumn = document.createElement('td');
     const remove = document.createElement('button');
     remove.classList.add(`${index}`);
 
@@ -57,7 +58,8 @@ Book.prototype.addBookToTable = function(index) {
     newRow.appendChild(author);
     newRow.appendChild(pages);
     newRow.appendChild(status);
-    newRow.appendChild(remove);
+    removeColumn.appendChild(remove);
+    newRow.appendChild(removeColumn);
     tbody.appendChild(newRow);
 };
 
